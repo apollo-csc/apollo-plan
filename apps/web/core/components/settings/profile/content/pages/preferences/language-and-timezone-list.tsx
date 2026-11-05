@@ -6,25 +6,19 @@
 
 import { observer } from "mobx-react";
 // plane imports
-import { SUPPORTED_LANGUAGES, useTranslation } from "@plane/i18n";
+import { useTranslation } from "@plane/i18n";
 import { TOAST_TYPE, setToast } from "@plane/propel/toast";
-import { CustomSelect } from "@plane/ui";
 // components
 import { TimezoneSelect } from "@/components/global";
 import { StartOfWeekPreference } from "@/components/profile/start-of-week-preference";
 import { SettingsControlItem } from "@/components/settings/control-item";
 // hooks
-import { useUser, useUserProfile } from "@/hooks/store/user";
+import { useUser } from "@/hooks/store/user";
 
 export const ProfileSettingsLanguageAndTimezonePreferencesList = observer(
   function ProfileSettingsLanguageAndTimezonePreferencesList() {
     // store hooks
-    const {
-      data: user,
-      updateCurrentUser,
-      userProfile: { data: profile },
-    } = useUser();
-    const { updateUserProfile } = useUserProfile();
+    const { data: user, updateCurrentUser } = useUser();
     // translation
     const { t } = useTranslation();
 
@@ -45,57 +39,14 @@ export const ProfileSettingsLanguageAndTimezonePreferencesList = observer(
       }
     };
 
-    const handleLanguageChange = async (value: string) => {
-      try {
-        await updateUserProfile({ language: value });
-        setToast({
-          title: "Sucesso!",
-          message: "Idioma atualizado com sucesso",
-          type: TOAST_TYPE.SUCCESS,
-        });
-      } catch (_error) {
-        setToast({
-          title: "Erro!",
-          message: "Não foi possível atualizar o idioma",
-          type: TOAST_TYPE.ERROR,
-        });
-      }
-    };
-
-    const getLanguageLabel = (value: string) => {
-      const selectedLanguage = SUPPORTED_LANGUAGES.find((l) => l.value === value);
-      if (!selectedLanguage) return value;
-      return selectedLanguage.label;
-    };
-
     return (
       <div className="flex flex-col gap-y-1">
         <SettingsControlItem
           title={t("timezone")}
           description={t("timezone_setting")}
-          control={<TimezoneSelect value={user?.user_timezone || "Asia/Kolkata"} onChange={handleTimezoneChange} />}
+          control={<TimezoneSelect value={user?.user_timezone || "America/Sao_Paulo"} onChange={handleTimezoneChange} />}
         />
-        <SettingsControlItem
-          title={t("language")}
-          description={t("language_setting")}
-          control={
-            <CustomSelect
-              value={profile?.language}
-              label={profile?.language ? getLanguageLabel(profile?.language) : "Selecione um idioma"}
-              onChange={handleLanguageChange}
-              buttonClassName="border border-subtle-1"
-              className="rounded-md"
-              input
-              placement="bottom-end"
-            >
-              {SUPPORTED_LANGUAGES.map((item) => (
-                <CustomSelect.Option key={item.value} value={item.value}>
-                  {item.label}
-                </CustomSelect.Option>
-              ))}
-            </CustomSelect>
-          }
-        />
+        {/* Apollo: seletor de idioma removido — a instância é só pt-BR */}
         <StartOfWeekPreference
           option={{
             title: "Primeiro dia da semana",

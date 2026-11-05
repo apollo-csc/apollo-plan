@@ -16,7 +16,14 @@ import {
   ETranslationFiles,
 } from "../constants";
 // core translations imports
-import { enCore, locales } from "../locales";
+import {
+  enCore,
+  locales,
+  ptBRAccessibility,
+  ptBREditor,
+  ptBREmptyState,
+  ptBRTranslations,
+} from "../locales";
 // types
 import type { TLanguage, ILanguageOption, ITranslations } from "../types";
 
@@ -29,6 +36,8 @@ export class TranslationStore {
   // Core translations that are always loaded
   private coreTranslations: ITranslations = {
     en: enCore,
+    // Apollo: pt-BR completo já no início (sem "piscar" em inglês na 1ª tela)
+    "pt-BR": merge({}, ptBRTranslations, ptBRAccessibility, ptBREditor, ptBREmptyState),
   };
   // List of translations for each language
   private translations: ITranslations = {};

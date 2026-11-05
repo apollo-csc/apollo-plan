@@ -9,16 +9,16 @@ export default {
     projects: "Projetos",
     pages: "Páginas",
     new_work_item: "Novo item",
-    home: "Home",
+    home: "Início",
     your_work: "Seu trabalho",
-    inbox: "Inbox",
-    workspace: "Workspace",
+    inbox: "Caixa de entrada",
+    workspace: "Espaço de trabalho",
     views: "Visualizações",
-    analytics: "Analytics",
+    analytics: "Análises",
     work_items: "Itens",
     cycles: "Ciclos",
     modules: "Módulos",
-    intake: "Intake",
+    intake: "Admissão",
     drafts: "Rascunhos",
     favorites: "Favoritos",
     pro: "Pro",
@@ -28,7 +28,7 @@ export default {
   auth: {
     common: {
       email: {
-        label: "Email",
+        label: "E-mail",
         placeholder: "nome@empresa.com",
         errors: {
           required: "Email é obrigatório",
@@ -290,7 +290,7 @@ export default {
   get_snapshot_of_each_active_cycle: "Obtenha um snapshot de cada ciclo ativo.",
   get_snapshot_of_each_active_cycle_description:
     "Rastreie as métricas de alto nível para todos os ciclos ativos, veja seu estado de progresso e tenha uma noção do escopo em relação aos prazos.",
-  compare_burndowns: "Compare burndowns.",
+  compare_burndowns: "Comparar burndowns.",
   compare_burndowns_description:
     "Monitore o desempenho de cada uma de suas equipes com uma olhada no relatório de burndown de cada ciclo.",
   quickly_see_make_or_break_issues: "Veja rapidamente os itens de trabalho decisivos.",
@@ -414,7 +414,7 @@ export default {
   docs: "Documentos",
   full_changelog: "Changelog completo",
   support: "Suporte",
-  forum: "Forum",
+  forum: "Fórum",
   powered_by_plane_pages: "Desenvolvido por Apollo Pages",
   please_select_at_least_one_invitation: "Selecione pelo menos um convite.",
   please_select_at_least_one_invitation_description:
@@ -800,7 +800,7 @@ export default {
     link_title_placeholder: "Como você gostaria de ver este link",
     url: "URL",
     side_peek: "Visualização lateral",
-    modal: "Modal",
+    modal: "Janela",
     full_screen: "Tela cheia",
     close_peek_view: "Fechar a visualização",
     toggle_peek_view_layout: "Alternar layout de visualização rápida",
@@ -2725,7 +2725,7 @@ export default {
         },
       },
       info: {
-        label: "Info",
+        label: "Informações",
         document_info: {
           words: "Palavras",
           characters: "Caracteres",
@@ -2766,7 +2766,7 @@ export default {
   project_members: {
     full_name: "Nome completo",
     display_name: "Nome de exibição",
-    email: "Email",
+    email: "E-mail",
     joining_date: "Data de entrada",
     role: "Papel",
   },

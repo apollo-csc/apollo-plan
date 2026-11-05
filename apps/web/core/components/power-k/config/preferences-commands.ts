@@ -160,7 +160,8 @@ export const usePowerKPreferencesCommands = (): TPowerKCommandConfig[] => {
         handleUpdateUserProfile({ language });
       },
       isEnabled: () => true,
-      isVisible: () => true,
+      // Apollo: instância só pt-BR — não há idioma para trocar
+      isVisible: () => false,
       closeOnSelect: true,
     },
   ];

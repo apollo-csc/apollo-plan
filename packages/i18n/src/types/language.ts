@@ -4,26 +4,10 @@
  * See the LICENSE file for details.
  */
 
-export type TLanguage =
-  | "en"
-  | "fr"
-  | "es"
-  | "ja"
-  | "zh-CN"
-  | "zh-TW"
-  | "ru"
-  | "it"
-  | "cs"
-  | "sk"
-  | "de"
-  | "ua"
-  | "pl"
-  | "ko"
-  | "pt-BR"
-  | "id"
-  | "ro"
-  | "vi-VN"
-  | "tr-TR";
+// Apollo: a instância é SÓ pt-BR. O "en" segue apenas como fallback interno de
+// chave faltante (uma chave nova vinda do upstream mostraria o id cru na tela
+// sem ele) — não aparece em nenhum seletor.
+export type TLanguage = "en" | "pt-BR";
 
 export interface ILanguageOption {
   label: string;

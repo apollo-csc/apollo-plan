@@ -6,6 +6,8 @@
 
 import * as React from "react";
 import { DayPicker } from "react-day-picker";
+// Apollo: instância só pt-BR — nomes de mês e dia da semana em português
+import { ptBR } from "react-day-picker/locale";
 import { ChevronLeftIcon } from "../icons/arrows/chevron-left";
 
 import { cn } from "../utils";
@@ -19,6 +21,7 @@ export function Calendar({ className, showOutsideDays = true, ...props }: Calend
 
   return (
     <DayPicker
+      locale={ptBR}
       showOutsideDays={showOutsideDays}
       className={cn("p-3", className)}
       weekStartsOn={props.weekStartsOn}

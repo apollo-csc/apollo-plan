@@ -4,8 +4,21 @@
  * See the LICENSE file for details.
  */
 
-import { differenceInDays, format, formatDistanceToNow, isAfter, isEqual, isValid, parseISO } from "date-fns";
+import {
+  differenceInDays,
+  format as formatOriginal,
+  formatDistanceToNow,
+  isAfter,
+  isEqual,
+  isValid,
+  parseISO,
+} from "date-fns";
+import { ptBR } from "date-fns/locale";
 import { isNumber } from "lodash-es";
+
+// Apollo: a instância é só pt-BR — nomes de mês/dia e o "há 2 meses" saem em
+// português. Formatos numéricos ("yyyy-MM-dd") não mudam com o locale.
+const format = (date: Date | number, formatToken: string) => formatOriginal(date, formatToken, { locale: ptBR });
 
 // Format Date Helpers
 /**
@@ -18,7 +31,7 @@ import { isNumber } from "lodash-es";
  */
 export const renderFormattedDate = (
   date: string | Date | undefined | null,
-  formatToken: string = "MMM dd, yyyy"
+  formatToken: string = "dd MMM yyyy"
 ): string | undefined => {
   // Parse the date to check if it is valid
   const parsedDate = getDate(date);
@@ -32,7 +45,7 @@ export const renderFormattedDate = (
     formattedDate = format(parsedDate, formatToken);
   } catch (_e) {
     // Format the date in format (MMM dd, yyyy) in case of any error
-    formattedDate = format(parsedDate, "MMM dd, yyyy");
+    formattedDate = format(parsedDate, "dd MMM yyyy");
   }
   return formattedDate;
 };
@@ -51,7 +64,7 @@ export const renderFormattedDateWithoutYear = (date: string | Date): string => {
   // Check if the parsed date is valid before formatting
   if (!isValid(parsedDate)) return ""; // Return empty string for invalid dates
   // Format the date in short format (MMM dd)
-  const formattedDate = format(parsedDate, "MMM dd");
+  const formattedDate = format(parsedDate, "dd MMM");
   return formattedDate;
 };
 
@@ -175,7 +188,7 @@ export const calculateTimeAgo = (time: string | number | Date | null): string =>
   // return if undefined
   if (!parsedTime) return ""; // Return empty string for invalid dates
   // Format the time in the form of amount of time passed since the event happened
-  const distance = formatDistanceToNow(parsedTime, { addSuffix: true });
+  const distance = formatDistanceToNow(parsedTime, { addSuffix: true, locale: ptBR });
   return distance;
 };
 
@@ -194,7 +207,7 @@ export function calculateTimeAgoShort(date: string | number | Date | null): stri
 
   const diffInMinutes = diffInSeconds / 60;
   if (diffInMinutes < 60) {
-    return `${Math.floor(diffInMinutes)}m`;
+    return `${Math.floor(diffInMinutes)}min`;
   }
 
   const diffInHours = diffInMinutes / 60;
@@ -209,11 +222,12 @@ export function calculateTimeAgoShort(date: string | number | Date | null): stri
 
   const diffInMonths = diffInDays / 30;
   if (diffInMonths < 12) {
-    return `${Math.floor(diffInMonths)}mo`;
+    // Apollo: "min" e "mês/meses" para não confundir minuto com mês em pt-BR
+    return Math.floor(diffInMonths) === 1 ? "1 mês" : `${Math.floor(diffInMonths)} meses`;
   }
 
   const diffInYears = diffInMonths / 12;
-  return `${Math.floor(diffInYears)}y`;
+  return `${Math.floor(diffInYears)}a`;
 }
 
 // Date Validation Helpers
@@ -500,12 +514,12 @@ export const formatDateRange = (
 
   // If only start date is provided
   if (parsedStartDate && !parsedEndDate) {
-    return format(parsedStartDate, "MMM dd, yyyy");
+    return format(parsedStartDate, "dd MMM yyyy");
   }
 
   // If only end date is provided
   if (!parsedStartDate && parsedEndDate) {
-    return format(parsedEndDate, "MMM dd, yyyy");
+    return format(parsedEndDate, "dd MMM yyyy");
   }
 
   // If both dates are provided
@@ -519,19 +533,19 @@ export const formatDateRange = (
     if (startYear === endYear && startMonth === endMonth) {
       const startDay = format(parsedStartDate, "dd");
       const endDay = format(parsedEndDate, "dd");
-      return `${format(parsedStartDate, "MMM")} ${startDay} - ${endDay}, ${startYear}`;
+      return `${startDay} - ${endDay} ${format(parsedStartDate, "MMM")} ${startYear}`;
     }
 
     // Same year, different month
     if (startYear === endYear) {
-      const startFormatted = format(parsedStartDate, "MMM dd");
-      const endFormatted = format(parsedEndDate, "MMM dd");
+      const startFormatted = format(parsedStartDate, "dd MMM");
+      const endFormatted = format(parsedEndDate, "dd MMM");
       return `${startFormatted} - ${endFormatted}, ${startYear}`;
     }
 
     // Different year
-    const startFormatted = format(parsedStartDate, "MMM dd, yyyy");
-    const endFormatted = format(parsedEndDate, "MMM dd, yyyy");
+    const startFormatted = format(parsedStartDate, "dd MMM yyyy");
+    const endFormatted = format(parsedEndDate, "dd MMM yyyy");
     return `${startFormatted} - ${endFormatted}`;
   }
 
