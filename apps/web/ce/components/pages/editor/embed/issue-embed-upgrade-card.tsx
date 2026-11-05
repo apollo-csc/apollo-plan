@@ -23,7 +23,7 @@ export function IssueEmbedUpgradeCard(props: any) {
       <div className="flex items-center gap-4">
         <ProIcon className="size-4 flex-shrink-0" />
         <p className="!text-14 text-secondary">
-          Embed and access issues in pages seamlessly, upgrade to Apollo Pro now.
+          A incorporação de itens em páginas não está disponível nesta versão.
         </p>
       </div>
       <a
@@ -32,7 +32,7 @@ export function IssueEmbedUpgradeCard(props: any) {
         rel="noopener noreferrer"
         className={cn(getButtonStyling("primary", "base"), "no-underline")}
       >
-        Upgrade
+        Saiba mais
       </a>
     </div>
   );

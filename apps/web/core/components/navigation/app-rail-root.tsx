@@ -55,7 +55,7 @@ export const AppRailRoot = observer(() => {
               <div className="mx-2 border-t border-strong" />
               <AppSidebarItem
                 item={{
-                  label: "Settings",
+                  label: "Configurações",
                   icon: <SettingsIcon className="size-5" />,
                   href: `/${workspaceSlug}/settings`,
                   isActive: isWorkspaceSettingsPath,
@@ -69,19 +69,19 @@ export const AppRailRoot = observer(() => {
           <ContextMenu.Content positionerClassName="z-30" className="outline-none">
             <ContextMenu.Item onClick={() => updateDisplayMode("icon_only")}>
               <div className="flex w-full items-center justify-between gap-2">
-                <span className="text-11">Icon only</span>
+                <span className="text-11">Só ícone</span>
                 {preferences.displayMode === "icon_only" && <CheckIcon className="size-3.5" />}
               </div>
             </ContextMenu.Item>
             <ContextMenu.Item onClick={() => updateDisplayMode("icon_with_label")}>
               <div className="flex w-full items-center justify-between gap-2">
-                <span className="text-11">Icon with name</span>
+                <span className="text-11">Ícone com nome</span>
                 {preferences.displayMode === "icon_with_label" && <CheckIcon className="size-3.5" />}
               </div>
             </ContextMenu.Item>
             <ContextMenu.Separator />
             <ContextMenu.Item onClick={toggleAppRail}>
-              <span className="text-11">{isCollapsed ? "Dock App Rail" : "Undock App Rail"}</span>
+              <span className="text-11">{isCollapsed ? "Fixar barra de apps" : "Soltar barra de apps"}</span>
             </ContextMenu.Item>
           </ContextMenu.Content>
         </ContextMenu.Portal>

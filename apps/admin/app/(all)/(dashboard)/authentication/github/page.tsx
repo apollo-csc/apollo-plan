@@ -83,7 +83,7 @@ const InstanceGithubAuthenticationPage = observer(function InstanceGithubAuthent
               src={resolveGeneralTheme(resolvedTheme) === "dark" ? githubDarkModeImage : githubLightModeImage}
               height={24}
               width={24}
-              alt="GitHub Logo"
+              alt="Logo do GitHub"
             />
           }
           config={

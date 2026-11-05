@@ -24,17 +24,17 @@ type DueDate = {
 
 const dueDateRange: DueDate[] = [
   {
-    name: "before",
+    name: "antes de",
     value: "before",
     icon: <CalendarBeforeIcon className="h-4 w-4" />,
   },
   {
-    name: "after",
+    name: "depois de",
     value: "after",
     icon: <CalendarAfterIcon className="h-4 w-4" />,
   },
   {
-    name: "range",
+    name: "intervalo",
     value: "range",
     icon: <CalendarDays className="h-4 w-4" />,
   },

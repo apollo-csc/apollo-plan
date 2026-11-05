@@ -38,7 +38,10 @@ export const AppliedFiltersList = observer(function AppliedFiltersList(props: Pr
             key={filterKey}
             className="flex flex-wrap items-center gap-2 rounded-md border border-subtle px-2 py-1 capitalize"
           >
-            <span className="text-11 text-tertiary">{replaceUnderscoreIfSnakeCase(filterKey)}</span>
+            <span className="text-11 text-tertiary">
+              {({ priority: "Prioridade", state: "Estado", labels: "Etiquetas" } as Record<string, string>)[filterKey] ??
+                replaceUnderscoreIfSnakeCase(filterKey)}
+            </span>
             <div className="flex flex-wrap items-center gap-1">
               {filterKey === "priority" && (
                 <AppliedPriorityFilters

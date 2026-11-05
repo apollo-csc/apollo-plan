@@ -82,7 +82,7 @@ export function NameColumn(props: NameProps) {
                     onClick={() => setRemoveMemberModal(rowData)}
                   >
                     <CircleMinus className="size-3.5 flex-shrink-0" />
-                    {rowData.member?.id === currentUser?.id ? "Leave " : "Remove "}
+                    {rowData.member?.id === currentUser?.id ? "Sair " : "Remover "}
                   </div>
                 </CustomMenu.MenuItem>
               </CustomMenu>
@@ -148,7 +148,7 @@ export const AccountTypeColumn = observer(function AccountTypeColumn(props: Acco
         <Controller
           name="role"
           control={control}
-          rules={{ required: "Role is required." }}
+          rules={{ required: "O papel é obrigatório." }}
           render={() => (
             <CustomSelect
               value={rowData.original_role}
@@ -162,8 +162,8 @@ export const AccountTypeColumn = observer(function AccountTypeColumn(props: Acco
 
                     setToast({
                       type: TOAST_TYPE.ERROR,
-                      title: "You can’t change this role yet.",
-                      message: errorString ?? "An error occurred while updating member role. Please try again.",
+                      title: "Você ainda não pode alterar este papel.",
+                      message: errorString ?? "Ocorreu um erro ao atualizar o papel do membro. Tente novamente.",
                     });
                   }
                 );

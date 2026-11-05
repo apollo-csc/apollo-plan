@@ -21,7 +21,7 @@ export function LatestFeatureBlock() {
         <p className="text-left text-13 text-primary">
           Páginas de cara nova! Escreva o que quiser e use a IA do Apollo para começar.{" "}
           <Link href="https://apollosolution.com.br" target="_blank" rel="noopener noreferrer">
-            <span className="text-13 font-medium underline hover:cursor-pointer">Learn more</span>
+            <span className="text-13 font-medium underline hover:cursor-pointer">Saiba mais</span>
           </Link>
         </p>
       </div>
@@ -33,7 +33,7 @@ export function LatestFeatureBlock() {
         <div className="h-[90%]">
           <img
             src={latestFeatures}
-            alt="Apollo Work items"
+            alt="Itens do Apollo"
             className={`-mt-2 ml-10 h-full rounded-md ${resolvedTheme === "dark" ? "bg-surface-1" : "bg-layer-2"}`}
           />
         </div>

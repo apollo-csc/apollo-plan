@@ -36,7 +36,7 @@ export const SpreadsheetSubIssueColumn = observer(function SpreadsheetSubIssueCo
     );
   };
 
-  const label = `${subIssueCount} sub-work item${subIssueCount !== 1 ? "s" : ""}`;
+  const label = `${subIssueCount} ${subIssueCount !== 1 ? "subitens" : "subitem"}`;
 
   return (
     <Row

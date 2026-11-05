@@ -77,11 +77,11 @@ export const DeleteInboxIssueModal = observer(function DeleteInboxIssueModal({
       // TODO: Need to translate the confirmation message
       content={
         <>
-          Are you sure you want to delete work item{" "}
+          Tem certeza de que deseja excluir o item{" "}
           <span className="font-medium break-words text-primary">
             {projectDetails?.identifier}-{data?.sequence_id}
           </span>
-          {""}? The work item will only be deleted from the intake and this action cannot be undone.
+          {""}? O item será excluído apenas da admissão, e esta ação não pode ser desfeita.
         </>
       }
     />

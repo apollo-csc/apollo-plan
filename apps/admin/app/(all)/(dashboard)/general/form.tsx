@@ -70,7 +70,7 @@ export const GeneralConfigurationForm = observer(function GeneralConfigurationFo
           />
 
           <div className="flex flex-col gap-1">
-            <h4 className="text-13 text-tertiary">Email</h4>
+            <h4 className="text-13 text-tertiary">E-mail</h4>
             <Input
               id="email"
               name="email"

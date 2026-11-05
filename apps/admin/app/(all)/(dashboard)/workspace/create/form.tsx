@@ -57,7 +57,7 @@ export function WorkspaceCreateForm() {
               setToast({
                 type: TOAST_TYPE.SUCCESS,
                 title: "Sucesso!",
-                message: "Workspace criado com sucesso.",
+                message: "Espaço de trabalho criado com sucesso.",
               });
               router.push(`/workspace`);
             })
@@ -65,7 +65,7 @@ export function WorkspaceCreateForm() {
               setToast({
                 type: TOAST_TYPE.ERROR,
                 title: "Erro!",
-                message: "Não foi possível criar o workspace. Tente novamente.",
+                message: "Não foi possível criar o espaço de trabalho. Tente novamente.",
               });
             });
         } else setSlugError(true);
@@ -74,7 +74,7 @@ export function WorkspaceCreateForm() {
         setToast({
           type: TOAST_TYPE.ERROR,
           title: "Erro!",
-          message: "Ocorreu um erro ao criar o workspace. Tente novamente.",
+          message: "Ocorreu um erro ao criar o espaço de trabalho. Tente novamente.",
         });
       });
   };
@@ -91,7 +91,7 @@ export function WorkspaceCreateForm() {
     <div className="space-y-8">
       <div className="grid-col grid w-full max-w-4xl grid-cols-1 items-start justify-between gap-x-10 gap-y-6 lg:grid-cols-2">
         <div className="flex flex-col gap-1">
-          <h4 className="text-13 text-tertiary">Dê um nome ao workspace</h4>
+          <h4 className="text-13 text-tertiary">Dê um nome ao espaço de trabalho</h4>
           <div className="flex flex-col gap-1">
             <Controller
               control={control}
@@ -122,7 +122,7 @@ export function WorkspaceCreateForm() {
           </div>
         </div>
         <div className="flex flex-col gap-1">
-          <h4 className="text-13 text-tertiary">Defina a URL do workspace</h4>
+          <h4 className="text-13 text-tertiary">Defina a URL do espaço de trabalho</h4>
           <div className="flex w-full items-center gap-0.5 rounded-md border-[0.5px] border-subtle px-3">
             <span className="text-13 whitespace-nowrap text-secondary">{workspaceBaseURL}</span>
             <Controller
@@ -156,7 +156,7 @@ export function WorkspaceCreateForm() {
           {errors.slug && <span className="text-11 text-danger-primary">{errors.slug.message}</span>}
         </div>
         <div className="flex flex-col gap-1">
-          <h4 className="text-13 text-tertiary">Quantas pessoas vão usar este workspace?</h4>
+          <h4 className="text-13 text-tertiary">Quantas pessoas vão usar este espaço de trabalho?</h4>
           <div className="w-full">
             <Controller
               name="organization_size"
@@ -196,7 +196,7 @@ export function WorkspaceCreateForm() {
           disabled={!isValid}
           loading={isSubmitting}
         >
-          {isSubmitting ? "Criando workspace" : "Criar workspace"}
+          {isSubmitting ? "Criando espaço de trabalho" : "Criar espaço de trabalho"}
         </Button>
         <Link className={getButtonStyling("secondary", "lg")} href="/workspace">
           Voltar

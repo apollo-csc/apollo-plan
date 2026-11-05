@@ -44,14 +44,14 @@ export const ThemeSwitcher = observer(function ThemeSwitcher(props: {
         setTheme(themeOption.value);
         const updatePromise = updateUserTheme({ theme: themeOption.value });
         setPromiseToast(updatePromise, {
-          loading: "Updating theme...",
+          loading: "Atualizando tema...",
           success: {
-            title: "Success!",
-            message: () => "Theme updated successfully!",
+            title: "Sucesso!",
+            message: () => "Tema atualizado com sucesso!",
           },
           error: {
-            title: "Error!",
-            message: () => "Failed to update the theme",
+            title: "Erro!",
+            message: () => "Falha ao atualizar o tema",
           },
         });
       } catch (error) {

@@ -117,13 +117,13 @@ export function ParentIssuesListModal({
         <Combobox.Options static className="vertical-scrollbar scrollbar-md max-h-80 scroll-py-2 overflow-y-auto">
           {searchTerm !== "" && (
             <h5 className="mx-2 text-13 text-secondary">
-              Search results for{" "}
+              Resultados da busca por{" "}
               <span className="text-primary">
                 {'"'}
                 {searchTerm}
                 {'"'}
               </span>{" "}
-              in project:
+              no projeto:
             </h5>
           )}
 

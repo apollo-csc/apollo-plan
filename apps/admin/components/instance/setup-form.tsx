@@ -128,7 +128,7 @@ export function InstanceSetupForm() {
         <div className="relative flex w-full max-w-[22.5rem] flex-col gap-6">
           <FormHeader
             heading="Configure sua instância Apollo"
-            subHeading="Depois do setup você poderá administrar esta instância Apollo."
+            subHeading="Depois da configuração você poderá administrar esta instância Apollo."
           />
           {bannerError?.message && <Banner type="error" message={bannerError.message} />}
           <form

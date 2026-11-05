@@ -110,8 +110,8 @@ export const InboxIssueCreateRoot = observer(function InboxIssueCreateRoot(props
     } else {
       setToast({
         type: TOAST_TYPE.ERROR,
-        title: "Error!",
-        message: "Editor is still processing changes. Please wait before proceeding.",
+        title: "Erro!",
+        message: "O editor ainda está processando as alterações. Aguarde antes de continuar.",
       });
       event.preventDefault(); // Prevent default action if editor is not ready to discard
     }
@@ -142,8 +142,8 @@ export const InboxIssueCreateRoot = observer(function InboxIssueCreateRoot(props
     if (!descriptionEditorRef.current?.isEditorReadyToDiscard()) {
       setToast({
         type: TOAST_TYPE.ERROR,
-        title: "Error!",
-        message: "Editor is still processing changes. Please wait before proceeding.",
+        title: "Erro!",
+        message: "O editor ainda está processando as alterações. Aguarde antes de continuar.",
       });
       return;
     }
@@ -176,16 +176,16 @@ export const InboxIssueCreateRoot = observer(function InboxIssueCreateRoot(props
         }
         setToast({
           type: TOAST_TYPE.SUCCESS,
-          title: `Success!`,
-          message: "Work item created successfully.",
+          title: `Sucesso!`,
+          message: "Item criado com sucesso.",
         });
       })
       .catch((error) => {
         console.error(error);
         setToast({
           type: TOAST_TYPE.ERROR,
-          title: `Error!`,
-          message: "Some error occurred. Please try again.",
+          title: `Erro!`,
+          message: "Ocorreu um erro. Tente novamente.",
         });
       });
     setFormSubmitting(false);
@@ -207,7 +207,7 @@ export const InboxIssueCreateRoot = observer(function InboxIssueCreateRoot(props
                 <DeDupeButtonRoot
                   workspaceSlug={workspaceSlug}
                   isDuplicateModalOpen={isDuplicateModalOpen}
-                  label={`${duplicateIssues.length} duplicate issue${duplicateIssues.length > 1 ? "s" : ""} found!`}
+                  label={`${duplicateIssues.length} ${duplicateIssues.length > 1 ? "itens duplicados encontrados" : "item duplicado encontrado"}!`}
                   handleOnClick={() => handleDuplicateIssueModal(!isDuplicateModalOpen)}
                 />
               )}
@@ -253,8 +253,8 @@ export const InboxIssueCreateRoot = observer(function InboxIssueCreateRoot(props
                   } else {
                     setToast({
                       type: TOAST_TYPE.ERROR,
-                      title: "Error!",
-                      message: "Editor is still processing changes. Please wait before proceeding.",
+                      title: "Erro!",
+                      message: "O editor ainda está processando as alterações. Aguarde antes de continuar.",
                     });
                   }
                 }}

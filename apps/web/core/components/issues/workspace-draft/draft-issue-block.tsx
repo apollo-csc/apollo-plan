@@ -56,7 +56,7 @@ export const DraftIssueBlock = observer(function DraftIssueBlock(props: Props) {
   const duplicateIssuePayload = omit(
     {
       ...issue,
-      name: `${issue.name} (copy)`,
+      name: `${issue.name} (cópia)`,
       is_draft: true,
     },
     ["id"]

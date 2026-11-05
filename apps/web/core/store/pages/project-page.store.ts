@@ -240,8 +240,8 @@ export class ProjectPageStore implements IProjectPageStore {
       runInAction(() => {
         this.loader = undefined;
         this.error = {
-          title: "Failed",
-          description: "Failed to fetch the pages, Please try again later.",
+          title: "Falha",
+          description: "Não foi possível carregar as páginas. Tente novamente mais tarde.",
         };
       });
       throw error;
@@ -283,8 +283,8 @@ export class ProjectPageStore implements IProjectPageStore {
       runInAction(() => {
         this.loader = undefined;
         this.error = {
-          title: "Failed",
-          description: "Failed to fetch the page, Please try again later.",
+          title: "Falha",
+          description: "Não foi possível carregar a página. Tente novamente mais tarde.",
         };
       });
       throw error;
@@ -316,8 +316,8 @@ export class ProjectPageStore implements IProjectPageStore {
       runInAction(() => {
         this.loader = undefined;
         this.error = {
-          title: "Failed",
-          description: "Failed to create a page, Please try again later.",
+          title: "Falha",
+          description: "Não foi possível criar a página. Tente novamente mais tarde.",
         };
       });
       throw error;
@@ -342,8 +342,8 @@ export class ProjectPageStore implements IProjectPageStore {
       runInAction(() => {
         this.loader = undefined;
         this.error = {
-          title: "Failed",
-          description: "Failed to delete a page, Please try again later.",
+          title: "Falha",
+          description: "Não foi possível excluir a página. Tente novamente mais tarde.",
         };
       });
       throw error;

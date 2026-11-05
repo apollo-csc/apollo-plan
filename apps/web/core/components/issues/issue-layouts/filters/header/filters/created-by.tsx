@@ -58,7 +58,7 @@ export const FilterCreatedBy = observer(function FilterCreatedBy(props: Props) {
   return (
     <>
       <FilterHeader
-        title={`Created by${appliedFiltersCount > 0 ? ` (${appliedFiltersCount})` : ""}`}
+        title={`Criado por${appliedFiltersCount > 0 ? ` (${appliedFiltersCount})` : ""}`}
         isPreviewEnabled={previewEnabled}
         handleIsPreviewEnabled={() => setPreviewEnabled(!previewEnabled)}
       />
@@ -87,12 +87,12 @@ export const FilterCreatedBy = observer(function FilterCreatedBy(props: Props) {
                     className="ml-8 text-11 font-medium text-accent-primary"
                     onClick={handleViewToggle}
                   >
-                    {itemsToRender === sortedOptions.length ? "View less" : "View all"}
+                    {itemsToRender === sortedOptions.length ? "Ver menos" : "Ver tudo"}
                   </button>
                 )}
               </>
             ) : (
-              <p className="text-11 text-placeholder italic">No matches found</p>
+              <p className="text-11 text-placeholder italic">Nenhum resultado encontrado</p>
             )
           ) : (
             <Loader className="space-y-2">

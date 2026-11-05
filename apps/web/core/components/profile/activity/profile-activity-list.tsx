@@ -166,7 +166,7 @@ export const ProfileActivityListPage = observer(function ProfileActivityListPage
                               >
                                 <span className="text-gray font-medium">
                                   {currentUser?.id === activityItem.actor_detail.id
-                                    ? "You"
+                                    ? "Você"
                                     : activityItem.actor_detail.display_name}
                                 </span>
                               </Link>

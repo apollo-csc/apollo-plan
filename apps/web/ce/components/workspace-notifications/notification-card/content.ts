@@ -11,9 +11,27 @@ import type { TNotificationContentMap } from "@/components/workspace-notificatio
 export const ADDITIONAL_NOTIFICATION_CONTENT_MAP: TNotificationContentMap = {};
 
 // Fallback action renderer for fields not in the map
+// Apollo: verbo e campo em pt-BR (a API manda "updated"/"state" etc.)
+const VERBO: Record<string, string> = { created: "criou", updated: "atualizou", deleted: "excluiu", removed: "removeu" };
+const CAMPO: Record<string, string> = {
+  state: "o estado",
+  priority: "a prioridade",
+  name: "o título",
+  description: "a descrição",
+  estimate_point: "a estimativa",
+  cycles: "o ciclo",
+  modules: "o módulo",
+  link: "o link",
+  attachment: "o anexo",
+  relates_to: "a relação",
+  blocking: "o bloqueio",
+  blocked_by: "o bloqueio",
+  duplicate: "a duplicata",
+  issue_type: "o tipo",
+};
 export const renderAdditionalAction = (notificationField: string, verb: string | undefined) => {
-  const baseAction = !["comment", "archived_at"].includes(notificationField) ? verb : "";
-  return `${baseAction} ${replaceUnderscoreIfSnakeCase(notificationField)}`;
+  const baseAction = !["comment", "archived_at"].includes(notificationField) ? (VERBO[verb ?? ""] ?? verb ?? "") : "";
+  return `${baseAction} ${CAMPO[notificationField] ?? replaceUnderscoreIfSnakeCase(notificationField)}`;
 };
 
 // Fallback value renderer for fields not in the map

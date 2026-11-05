@@ -54,7 +54,7 @@ export const getGroupByColumns = (
     case "created_by":
       return getCreatedByColumns(member) as any;
     default:
-      if (includeNone) return [{ id: `All Issues`, name: `All work items`, payload: {}, icon: undefined }];
+      if (includeNone) return [{ id: `All Issues`, name: `Todos os itens`, payload: {}, icon: undefined }];
   }
 };
 
@@ -78,7 +78,7 @@ const getCycleColumns = (cycleStore: ICycleStore): IGroupByColumn[] | undefined 
   });
   cycleGroups.push({
     id: "None",
-    name: "None",
+    name: "Sem ciclo",
     icon: <CycleIcon className="h-3.5 w-3.5" />,
     payload: { cycle_id: null },
   });
@@ -104,7 +104,7 @@ const getModuleColumns = (moduleStore: IIssueModuleStore): IGroupByColumn[] | un
   }) as any;
   moduleGroups.push({
     id: "None",
-    name: "None",
+    name: "Sem módulo",
     icon: <ModuleIcon className="h-3.5 w-3.5" />,
     payload: { module_ids: [] },
   });
@@ -133,7 +133,10 @@ const getPriorityColumns = () => {
 
   return priorities.map((priority) => ({
     id: priority.key,
-    name: priority.title,
+    name:
+      ({ urgent: "Urgente", high: "Alta", medium: "Média", low: "Baixa", none: "Nenhuma" } as Record<string, string>)[
+        priority.key
+      ] ?? priority.title,
     icon: <PriorityIcon priority={priority?.key} />,
     payload: { priority: priority.key },
   }));
@@ -144,7 +147,7 @@ const getLabelsColumns = (label: IIssueLabelStore) => {
 
   if (!storeLabels) return;
 
-  const labels = [...storeLabels, { id: "None", name: "None", color: "#666" }];
+  const labels = [...storeLabels, { id: "None", name: "Sem etiqueta", color: "#666" }];
 
   return labels.map((label) => ({
     id: label.id,
@@ -168,7 +171,7 @@ const getAssigneeColumns = (member: IIssueMemberStore) => {
     payload: { assignee_ids: [member.id] },
   }));
 
-  assigneeColumns.push({ id: "None", name: "None", icon: <Avatar size="md" />, payload: {} });
+  assigneeColumns.push({ id: "None", name: "Sem responsável", icon: <Avatar size="md" />, payload: {} });
 
   return assigneeColumns;
 };

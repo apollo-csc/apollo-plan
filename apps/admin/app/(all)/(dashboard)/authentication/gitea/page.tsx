@@ -70,7 +70,7 @@ const InstanceGiteaAuthenticationPage = observer(function InstanceGiteaAuthentic
         <AuthenticationMethodCard
           name="Gitea"
           description="Permita que membros entrem ou se cadastrem no Apollo com suas contas Gitea."
-          icon={<img src={giteaLogo} height={24} width={24} alt="Gitea Logo" />}
+          icon={<img src={giteaLogo} height={24} width={24} alt="Logo do Gitea" />}
           config={
             <ToggleSwitch
               value={isGiteaEnabled}

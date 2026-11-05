@@ -128,7 +128,7 @@ export function PageToolbar(props: Props) {
               }
             )}
           >
-            {activeTypography?.name || "Text"}
+            {activeTypography?.name || "Texto"}
             <ChevronDownIcon className="size-3 shrink-0" />
           </span>
         }

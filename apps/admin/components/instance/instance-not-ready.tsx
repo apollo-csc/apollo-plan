@@ -15,8 +15,8 @@ export function InstanceNotReady() {
       <div className="relative w-auto max-w-2xl space-y-8 py-10">
         <div className="relative flex flex-col items-center justify-center space-y-4">
           <h1 className="pb-3 text-24 font-bold">Bem-vindo ao Apollo!</h1>
-          <img src={PlaneTakeOffImage} alt="Apollo Logo" />
-          <p className="text-14 font-medium text-placeholder">Comece configurando sua instância e seu workspace</p>
+          <img src={PlaneTakeOffImage} alt="Logo do Apollo" />
+          <p className="text-14 font-medium text-placeholder">Comece configurando sua instância e seu espaço de trabalho</p>
         </div>
 
         <div>

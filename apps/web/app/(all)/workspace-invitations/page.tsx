@@ -81,40 +81,40 @@ function WorkspaceInvitationPage() {
         {invitationDetail && !invitationDetail.responded_at ? (
           error ? (
             <div className="shadow-2xl flex w-full flex-col space-y-4 rounded-sm border border-subtle bg-surface-1 px-4 py-8 text-center md:w-1/3">
-              <h2 className="text-18 uppercase">INVITATION NOT FOUND</h2>
+              <h2 className="text-18 uppercase">CONVITE NÃO ENCONTRADO</h2>
             </div>
           ) : (
             <EmptySpace
-              title={`You have been invited to ${invitationDetail.workspace.name}`}
-              description="Your workspace is where you'll create projects, collaborate on your work items, and organize different streams of work in your Apollo account."
+              title={`Você foi convidado para ${invitationDetail.workspace.name}`}
+              description="O espaço de trabalho é onde você cria projetos, colabora nos seus itens e organiza as diferentes frentes de trabalho na sua conta Apollo."
             >
-              <EmptySpaceItem Icon={CheckIcon} title="Accept" action={handleAccept} />
-              <EmptySpaceItem Icon={CloseIcon} title="Ignore" action={handleReject} />
+              <EmptySpaceItem Icon={CheckIcon} title="Aceitar" action={handleAccept} />
+              <EmptySpaceItem Icon={CloseIcon} title="Ignorar" action={handleReject} />
             </EmptySpace>
           )
         ) : error || invitationDetail?.responded_at ? (
           invitationDetail?.accepted ? (
             <EmptySpace
-              title={`You are already a member of ${invitationDetail.workspace.name}`}
-              description="Your workspace is where you'll create projects, collaborate on your work items, and organize different streams of work in your Apollo account."
+              title={`Você já é membro de ${invitationDetail.workspace.name}`}
+              description="O espaço de trabalho é onde você cria projetos, colabora nos seus itens e organiza as diferentes frentes de trabalho na sua conta Apollo."
             >
-              <EmptySpaceItem Icon={Boxes} title="Continue to home" href="/" />
+              <EmptySpaceItem Icon={Boxes} title="Ir para o início" href="/" />
             </EmptySpace>
           ) : (
             <EmptySpace
-              title="This invitation link is not active anymore."
-              description="Your workspace is where you'll create projects, collaborate on your work items, and organize different streams of work in your Apollo account."
-              link={{ text: "Or start from an empty project", href: "/" }}
+              title="Este link de convite não está mais ativo."
+              description="O espaço de trabalho é onde você cria projetos, colabora nos seus itens e organiza as diferentes frentes de trabalho na sua conta Apollo."
+              link={{ text: "Ou comece com um projeto vazio", href: "/" }}
             >
               {!currentUser ? (
-                <EmptySpaceItem Icon={User2} title="Sign in to continue" href="/" />
+                <EmptySpaceItem Icon={User2} title="Entre para continuar" href="/" />
               ) : (
-                <EmptySpaceItem Icon={Boxes} title="Continue to home" href="/" />
+                <EmptySpaceItem Icon={Boxes} title="Ir para o início" href="/" />
               )}
               <EmptySpaceItem Icon={Star} title="Conheça a Apollo Solution" href="https://apollosolution.com.br" />
               <EmptySpaceItem
                 Icon={Share2}
-                title="Join our community of active creators"
+                title="Conheça a comunidade Apollo"
                 href="https://apollosolution.com.br"
               />
             </EmptySpace>

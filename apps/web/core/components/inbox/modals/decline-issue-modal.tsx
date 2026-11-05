@@ -50,11 +50,11 @@ export function DeclineIssueModal(props: Props) {
       // TODO: Need to translate the confirmation message
       content={
         <>
-          Are you sure you want to decline work item{" "}
+          Tem certeza de que deseja recusar o item{" "}
           <span className="font-medium break-words text-primary">
             {projectDetails?.identifier}-{data?.sequence_id}
           </span>
-          {""}? This action cannot be undone.
+          {""}? Esta ação não pode ser desfeita.
         </>
       }
       primaryButtonText={{

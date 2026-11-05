@@ -32,7 +32,7 @@ export const AppliedDateFilters = observer(function AppliedDateFilters(props: Pr
       if (dateParts.length === 2) {
         const [date, time] = dateParts;
 
-        dateLabel = `${capitalizeFirstLetter(time)} ${renderFormattedDate(date)}`;
+        dateLabel = `${({ after: "Depois de", before: "Antes de" } as Record<string, string>)[time] ?? capitalizeFirstLetter(time)} ${renderFormattedDate(date)}`;
       }
     }
 

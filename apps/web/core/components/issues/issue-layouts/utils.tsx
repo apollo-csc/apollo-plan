@@ -97,7 +97,7 @@ export const getGroupByColumns = ({
     return [
       {
         id: "All Issues",
-        name: `All ${isEpic ? "Epics" : "work items"}`,
+        name: `Todos ${isEpic ? "os épicos" : "os itens"}`,
         payload: {},
         icon: undefined,
       },
@@ -169,12 +169,12 @@ const getCycleColumns = (): IGroupByColumn[] | undefined => {
       icon: <CycleGroupIcon cycleGroup={cycleStatus} className="h-3.5 w-3.5" />,
       payload: { cycle_id: cycle.id },
       isDropDisabled,
-      dropErrorMessage: isDropDisabled ? "Work item cannot be moved to completed cycles" : undefined,
+      dropErrorMessage: isDropDisabled ? "O item não pode ser movido para ciclos concluídos" : undefined,
     });
   });
   cycles.push({
     id: "None",
-    name: "None",
+    name: "Sem ciclo",
     icon: <CycleIcon className="h-3.5 w-3.5" />,
     payload: {},
   });
@@ -201,7 +201,7 @@ const getModuleColumns = (): IGroupByColumn[] | undefined => {
   });
   modules.push({
     id: "None",
-    name: "None",
+    name: "Sem módulo",
     icon: <ModuleIcon className="h-3.5 w-3.5" />,
     payload: {},
   });
@@ -256,7 +256,7 @@ const getLabelsColumns = ({ isWorkspaceLevel }: TGetColumns): IGroupByColumn[] =
   // map labels to group by columns
   const labels = [
     ...(isWorkspaceLevel ? workspaceLabels || [] : projectLabels || []),
-    { id: "None", name: "None", color: "#666" },
+    { id: "None", name: "Sem etiqueta", color: "#666" },
   ];
   // map labels to group by columns
   return labels.map((label) => ({
@@ -289,7 +289,7 @@ const getAssigneeColumns = ({ isWorkspaceLevel, projectId }: TGetColumns): IGrou
     });
   });
   if (includeNone) {
-    assigneeColumns.push({ id: "None", name: "None", icon: <Avatar size="md" />, payload: {} });
+    assigneeColumns.push({ id: "None", name: "Sem responsável", icon: <Avatar size="md" />, payload: {} });
   }
 
   return assigneeColumns;
@@ -694,14 +694,14 @@ export const getBlockViewDetails = (
 
   if (isBlockVisibleOnChart && !isBlockComplete) {
     if (block?.start_date) {
-      message = `From ${renderFormattedDate(block.start_date)}`;
+      message = `A partir de ${renderFormattedDate(block.start_date)}`;
       blockStyle.maskImage = `linear-gradient(to right, ${backgroundColor} 50%, transparent 95%)`;
     } else if (block?.target_date) {
-      message = `Till ${renderFormattedDate(block.target_date)}`;
+      message = `Até ${renderFormattedDate(block.target_date)}`;
       blockStyle.maskImage = `linear-gradient(to left, ${backgroundColor} 50%, transparent 95%)`;
     }
   } else if (isBlockComplete) {
-    message = `${renderFormattedDate(block?.start_date)} to ${renderFormattedDate(block?.target_date)}`;
+    message = `${renderFormattedDate(block?.start_date)} a ${renderFormattedDate(block?.target_date)}`;
   }
 
   return {

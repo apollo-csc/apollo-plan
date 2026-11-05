@@ -55,7 +55,7 @@ export const getCoreAuthenticationModesMap: (
     key: "google",
     name: "Google",
     description: "Permita que membros entrem ou se cadastrem no Apollo com suas contas Google.",
-    icon: <img src={googleLogo} height={20} width={20} alt="Google Logo" />,
+    icon: <img src={googleLogo} height={20} width={20} alt="Logo do Google" />,
     config: <GoogleConfiguration disabled={disabled} updateConfig={updateConfig} />,
     enabledConfigKey: "IS_GOOGLE_ENABLED",
   },
@@ -68,7 +68,7 @@ export const getCoreAuthenticationModesMap: (
         src={resolvedTheme === "dark" ? githubDarkModeImage : githubLightModeImage}
         height={20}
         width={20}
-        alt="GitHub Logo"
+        alt="Logo do GitHub"
       />
     ),
     config: <GithubConfiguration disabled={disabled} updateConfig={updateConfig} />,
@@ -78,7 +78,7 @@ export const getCoreAuthenticationModesMap: (
     key: "gitlab",
     name: "GitLab",
     description: "Permita que membros entrem ou se cadastrem no Apollo com suas contas GitLab.",
-    icon: <img src={gitlabLogo} height={20} width={20} alt="GitLab Logo" />,
+    icon: <img src={gitlabLogo} height={20} width={20} alt="Logo do GitLab" />,
     config: <GitlabConfiguration disabled={disabled} updateConfig={updateConfig} />,
     enabledConfigKey: "IS_GITLAB_ENABLED",
   },
@@ -86,7 +86,7 @@ export const getCoreAuthenticationModesMap: (
     key: "gitea",
     name: "Gitea",
     description: "Permita que membros entrem ou se cadastrem no Apollo com suas contas Gitea.",
-    icon: <img src={giteaLogo} height={20} width={20} alt="Gitea Logo" />,
+    icon: <img src={giteaLogo} height={20} width={20} alt="Logo do Gitea" />,
     config: <GiteaConfiguration disabled={disabled} updateConfig={updateConfig} />,
     enabledConfigKey: "IS_GITEA_ENABLED",
   },

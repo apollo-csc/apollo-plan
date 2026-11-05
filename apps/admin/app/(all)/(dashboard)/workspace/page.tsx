@@ -77,8 +77,8 @@ const WorkspaceManagementPage = observer(function WorkspaceManagementPage(_props
   return (
     <PageWrapper
       header={{
-        title: "Workspaces desta instância",
-        description: "Veja todos os workspaces e controle quem pode criá-los.",
+        title: "Espaços de trabalho desta instância",
+        description: "Veja todos os espaços de trabalho e controle quem pode criá-los.",
       }}
     >
       <div className="space-y-3">
@@ -86,10 +86,10 @@ const WorkspaceManagementPage = observer(function WorkspaceManagementPage(_props
           <div className={cn("flex w-full items-center gap-14 rounded-sm")}>
             <div className="flex grow items-center gap-4">
               <div className="grow">
-                <div className="pb-1 text-16 font-medium">Impedir que outras pessoas criem workspaces.</div>
+                <div className="pb-1 text-16 font-medium">Impedir que outras pessoas criem espaços de trabalho.</div>
                 <div className={cn("text-11 leading-5 font-regular text-tertiary")}>
-                  Ativando isto, só você poderá criar workspaces. Você precisará convidar os usuários para os novos
-                  workspaces.
+                  Ativando isto, só você poderá criar espaços de trabalho. Você precisará convidar os usuários para os
+                  novos espaços de trabalho.
                 </div>
               </div>
             </div>
@@ -120,19 +120,19 @@ const WorkspaceManagementPage = observer(function WorkspaceManagementPage(_props
             <div className="flex items-center justify-between gap-2 pt-6">
               <div className="flex flex-col items-start gap-x-2">
                 <div className="flex items-center gap-2 text-16 font-medium">
-                  Todos os workspaces desta instância <span className="text-tertiary">• {workspaceIds.length}</span>
+                  Todos os espaços de trabalho desta instância <span className="text-tertiary">• {workspaceIds.length}</span>
                   {workspaceLoader && ["mutation", "pagination"].includes(workspaceLoader) && (
                     <LoaderIcon className="h-4 w-4 animate-spin" />
                   )}
                 </div>
                 <div className={cn("text-11 leading-5 font-regular text-tertiary")}>
-                  Ainda não é possível excluir workspaces, e você só pode acessar o workspace se for Admin ou Membro
-                  dele.
+                  Ainda não é possível excluir espaços de trabalho, e você só pode acessar um espaço de trabalho se for
+                  administrador ou membro dele.
                 </div>
               </div>
               <div className="flex items-center gap-2">
                 <Link href="/workspace/create" className={getButtonStyling("primary", "base")}>
-                  Criar workspace
+                  Criar espaço de trabalho
                 </Link>
               </div>
             </div>
@@ -168,6 +168,6 @@ const WorkspaceManagementPage = observer(function WorkspaceManagementPage(_props
   );
 });
 
-export const meta: Route.MetaFunction = () => [{ title: "Gestão de workspaces - Apollo Admin" }];
+export const meta: Route.MetaFunction = () => [{ title: "Gestão de espaços de trabalho - Apollo Admin" }];
 
 export default WorkspaceManagementPage;

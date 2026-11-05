@@ -36,7 +36,7 @@ export const PLANE_COMMUNITY_PRODUCTS: Record<string, IPaymentProduct> = {
     id: EProductSubscriptionEnum.PRO,
     name: "Apollo Pro",
     description:
-      "More views, more cycles powers, more pages features, new reports, and better dashboards are waiting to be unlocked.",
+      "Mais visualizações, mais recursos de ciclos e de páginas, novos relatórios e painéis melhores esperando para serem liberados.",
     type: "PRO",
     prices: [
       {
@@ -63,7 +63,7 @@ export const PLANE_COMMUNITY_PRODUCTS: Record<string, IPaymentProduct> = {
     id: EProductSubscriptionEnum.BUSINESS,
     name: "Apollo Business",
     description:
-      "The earliest packaging of Business at $10 a seat a month billed annually, $12 a seat a month billed monthly for Apollo Cloud",
+      "O primeiro pacote Business por US$ 10 por usuário/mês no plano anual e US$ 12 por usuário/mês no plano mensal no Apollo Cloud",
     type: "BUSINESS",
     prices: [
       {

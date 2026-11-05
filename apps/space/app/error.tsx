@@ -16,7 +16,7 @@ function ErrorPage() {
     <div className="grid h-screen place-items-center bg-surface-1 p-4">
       <div className="space-y-8 text-center">
         <div className="space-y-2">
-          <h3 className="text-16 font-semibold">Yikes! That doesn{"'"}t look good.</h3>
+          <h3 className="text-16 font-semibold">Opa! Algo não saiu como esperado.</h3>
           <p className="mx-auto text-13 text-secondary md:w-1/2">
             Algo deu errado no Apollo. Sem problemas: nossa equipe já foi notificada. Se você tiver mais detalhes,
             escreva para{" "}
@@ -37,7 +37,7 @@ function ErrorPage() {
         </div>
         <div className="flex items-center justify-center gap-2">
           <Button variant="primary" size="lg" onClick={handleRetry}>
-            Refresh
+            Recarregar
           </Button>
           {/* <Button variant="secondary" size="lg" onClick={() => {}}>
             Sign out

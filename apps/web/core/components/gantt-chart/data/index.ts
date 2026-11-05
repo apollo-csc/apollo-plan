@@ -15,35 +15,35 @@ export const generateWeeks = (startOfWeek: EStartOfTheWeek = EStartOfTheWeek.SUN
 ];
 
 export const weeks: WeekMonthDataType[] = [
-  { key: 0, shortTitle: "sun", title: "sunday", abbreviation: "Su" },
-  { key: 1, shortTitle: "mon", title: "monday", abbreviation: "M" },
-  { key: 2, shortTitle: "tue", title: "tuesday", abbreviation: "T" },
-  { key: 3, shortTitle: "wed", title: "wednesday", abbreviation: "W" },
-  { key: 4, shortTitle: "thurs", title: "thursday", abbreviation: "Th" },
-  { key: 5, shortTitle: "fri", title: "friday", abbreviation: "F" },
-  { key: 6, shortTitle: "sat", title: "saturday", abbreviation: "Sa" },
+  { key: 0, shortTitle: "sun", title: "domingo", abbreviation: "Dom" },
+  { key: 1, shortTitle: "mon", title: "segunda-feira", abbreviation: "Seg" },
+  { key: 2, shortTitle: "tue", title: "terça-feira", abbreviation: "Ter" },
+  { key: 3, shortTitle: "wed", title: "quarta-feira", abbreviation: "Qua" },
+  { key: 4, shortTitle: "thurs", title: "quinta-feira", abbreviation: "Qui" },
+  { key: 5, shortTitle: "fri", title: "sexta-feira", abbreviation: "Sex" },
+  { key: 6, shortTitle: "sat", title: "sábado", abbreviation: "Sáb" },
 ];
 
 export const months: WeekMonthDataType[] = [
-  { key: 0, shortTitle: "jan", title: "january", abbreviation: "Jan" },
-  { key: 1, shortTitle: "feb", title: "february", abbreviation: "Feb" },
-  { key: 2, shortTitle: "mar", title: "march", abbreviation: "Mar" },
-  { key: 3, shortTitle: "apr", title: "april", abbreviation: "Apr" },
-  { key: 4, shortTitle: "may", title: "may", abbreviation: "May" },
-  { key: 5, shortTitle: "jun", title: "june", abbreviation: "Jun" },
-  { key: 6, shortTitle: "jul", title: "july", abbreviation: "Jul" },
-  { key: 7, shortTitle: "aug", title: "august", abbreviation: "Aug" },
-  { key: 8, shortTitle: "sept", title: "september", abbreviation: "Sept" },
-  { key: 9, shortTitle: "oct", title: "october", abbreviation: "Oct" },
-  { key: 10, shortTitle: "nov", title: "november", abbreviation: "Nov" },
-  { key: 11, shortTitle: "dec", title: "december", abbreviation: "Dec" },
+  { key: 0, shortTitle: "jan", title: "janeiro", abbreviation: "Jan" },
+  { key: 1, shortTitle: "fev", title: "fevereiro", abbreviation: "Fev" },
+  { key: 2, shortTitle: "mar", title: "março", abbreviation: "Mar" },
+  { key: 3, shortTitle: "abr", title: "abril", abbreviation: "Abr" },
+  { key: 4, shortTitle: "mai", title: "maio", abbreviation: "Mai" },
+  { key: 5, shortTitle: "jun", title: "junho", abbreviation: "Jun" },
+  { key: 6, shortTitle: "jul", title: "julho", abbreviation: "Jul" },
+  { key: 7, shortTitle: "ago", title: "agosto", abbreviation: "Ago" },
+  { key: 8, shortTitle: "set", title: "setembro", abbreviation: "Set" },
+  { key: 9, shortTitle: "out", title: "outubro", abbreviation: "Out" },
+  { key: 10, shortTitle: "nov", title: "novembro", abbreviation: "Nov" },
+  { key: 11, shortTitle: "dez", title: "dezembro", abbreviation: "Dez" },
 ];
 
 export const quarters: WeekMonthDataType[] = [
   { key: 0, shortTitle: "Q1", title: "Jan - Mar", abbreviation: "Q1" },
-  { key: 1, shortTitle: "Q2", title: "Apr - Jun", abbreviation: "Q2" },
-  { key: 2, shortTitle: "Q3", title: "Jul - Sept", abbreviation: "Q3" },
-  { key: 3, shortTitle: "Q4", title: "Oct - Dec", abbreviation: "Q4" },
+  { key: 1, shortTitle: "Q2", title: "Abr - Jun", abbreviation: "Q2" },
+  { key: 2, shortTitle: "Q3", title: "Jul - Set", abbreviation: "Q3" },
+  { key: 3, shortTitle: "Q4", title: "Out - Dez", abbreviation: "Q4" },
 ];
 
 export const charCapitalize = (word: string) => `${word.charAt(0).toUpperCase()}${word.substring(1)}`;

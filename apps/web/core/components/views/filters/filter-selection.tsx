@@ -65,7 +65,7 @@ export const ViewFiltersSelection = observer(function ViewFiltersSelection(props
           <input
             type="text"
             className="w-full bg-surface-2 outline-none placeholder:text-placeholder"
-            placeholder="Search"
+            placeholder="Buscar"
             value={filtersSearchQuery}
             onChange={(e) => setFiltersSearchQuery(e.target.value)}
             autoFocus={!isMobile}
@@ -87,7 +87,7 @@ export const ViewFiltersSelection = observer(function ViewFiltersSelection(props
                 favorites: !filters.filters?.favorites,
               })
             }
-            title="Favorites"
+            title="Favoritos"
           />
         </div>
 
@@ -97,8 +97,8 @@ export const ViewFiltersSelection = observer(function ViewFiltersSelection(props
           handleUpdate={(val: string | string[]) => handleFilters("view_type", val)}
           searchQuery={filtersSearchQuery}
           accessFilters={[
-            { key: EViewAccess.PRIVATE, value: "Private" },
-            { key: EViewAccess.PUBLIC, value: "Public" },
+            { key: EViewAccess.PRIVATE, value: "Privada" },
+            { key: EViewAccess.PUBLIC, value: "Pública" },
           ]}
         />
 

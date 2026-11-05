@@ -107,7 +107,7 @@ export const ProjectLevelWorkItemFiltersHOC = observer(function ProjectLevelWork
 
   const getDefaultViewDetailPayload: () => Partial<IProjectView> = useCallback(
     () => ({
-      name: viewDetails ? `${viewDetails?.name} 2` : "Untitled",
+      name: viewDetails ? `${viewDetails?.name} 2` : "Sem título",
       description: viewDetails ? viewDetails.description : "",
       logo_props: viewDetails ? viewDetails.logo_props : undefined,
       access: viewDetails ? viewDetails.access : EViewAccess.PUBLIC,
@@ -140,8 +140,8 @@ export const ProjectLevelWorkItemFiltersHOC = observer(function ProjectLevelWork
       if (!viewDetails) {
         setToast({
           type: TOAST_TYPE.ERROR,
-          title: "We couldn't find the view",
-          message: "The view you're trying to update doesn't exist.",
+          title: "Não encontramos a visualização",
+          message: "A visualização que você está tentando atualizar não existe.",
         });
 
         return;
@@ -153,15 +153,15 @@ export const ProjectLevelWorkItemFiltersHOC = observer(function ProjectLevelWork
         .then(() => {
           setToast({
             type: TOAST_TYPE.SUCCESS,
-            title: "Success!",
-            message: "Your view has been updated successfully.",
+            title: "Sucesso!",
+            message: "Sua visualização foi atualizada com sucesso.",
           });
         })
         .catch(() => {
           setToast({
             type: TOAST_TYPE.ERROR,
-            title: "Error!",
-            message: "Your view could not be updated. Please try again.",
+            title: "Erro!",
+            message: "Não foi possível atualizar sua visualização. Tente novamente.",
           });
         });
     },

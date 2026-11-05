@@ -35,7 +35,7 @@ export function SingleExport({ service, refreshing }: Props) {
       <div>
         <h4 className="flex items-center gap-2 text-13">
           <span>
-            Export to{" "}
+            Exportar para{" "}
             <span className="font-medium">
               {provider === "csv" ? "CSV" : provider === "xlsx" ? "Excel" : provider === "json" ? "JSON" : ""}
             </span>{" "}
@@ -53,7 +53,9 @@ export function SingleExport({ service, refreshing }: Props) {
                       : ""
             }`}
           >
-            {refreshing ? "Refreshing..." : service.status}
+            {refreshing
+              ? "Atualizando..."
+              : (({ queued: "Na fila", processing: "Processando", completed: "Concluído", failed: "Falhou", expired: "Expirado" } as Record<string, string>)[service.status] ?? service.status)}
           </span>
         </h4>
         <div className="mt-2 flex items-center gap-2 text-11 text-secondary">
@@ -67,14 +69,14 @@ export function SingleExport({ service, refreshing }: Props) {
             <div>
               <a target="_blank" href={service?.url} rel="noopener noreferrer">
                 <Button variant="primary" className="w-full">
-                  {isLoading ? "Downloading..." : "Download"}
+                  {isLoading ? "Baixando..." : "Baixar"}
                 </Button>
               </a>
             </div>
           )}
         </>
       ) : (
-        <div className="text-11 text-danger-primary">Expired</div>
+        <div className="text-11 text-danger-primary">Expirado</div>
       )}
     </div>
   );

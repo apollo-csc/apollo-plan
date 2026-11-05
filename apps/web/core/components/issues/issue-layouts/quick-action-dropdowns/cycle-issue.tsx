@@ -70,7 +70,7 @@ export const CycleIssueQuickActions = observer(function CycleIssueQuickActions(p
   const duplicateIssuePayload = omit(
     {
       ...issue,
-      name: `${issue.name} (copy)`,
+      name: `${issue.name} (cópia)`,
       sourceIssueId: issue.id,
     },
     ["id"]

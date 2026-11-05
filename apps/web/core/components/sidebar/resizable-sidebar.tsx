@@ -192,7 +192,7 @@ export function ResizableSidebar({
           maxWidth: `${isCollapsed ? 0 : width}px`,
         }}
         role="complementary"
-        aria-label="Main sidebar"
+        aria-label="Barra lateral principal"
         data-prevent-outside-click={isMobile}
       >
         <aside
@@ -215,7 +215,7 @@ export function ResizableSidebar({
             onDoubleClick={() => toggleCollapsed()}
             onMouseDown={(e) => startResizing(e)}
             role="separator"
-            aria-label="Resize sidebar"
+            aria-label="Redimensionar barra lateral"
           />
         </aside>
       </div>
@@ -235,7 +235,7 @@ export function ResizableSidebar({
         onMouseEnter={handlePeekEnter}
         onMouseLeave={handlePeekLeave}
         role="complementary"
-        aria-label="Sidebar peek view"
+        aria-label="Pré-visualização da barra lateral"
       >
         <aside
           className={cn(
@@ -257,7 +257,7 @@ export function ResizableSidebar({
             onDoubleClick={() => toggleCollapsed()}
             onMouseDown={(e) => startResizing(e)}
             role="separator"
-            aria-label="Resize sidebar"
+            aria-label="Redimensionar barra lateral"
           />
         </aside>
       </div>

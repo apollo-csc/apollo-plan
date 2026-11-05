@@ -27,8 +27,8 @@ export const coreSidebarMenuLinks: Record<TCoreSidebarMenuKey, TSidebarMenuItem>
   },
   workspace: {
     Icon: WorkspaceIcon,
-    name: "Workspaces",
-    description: "Gerencie todos os workspaces desta instância.",
+    name: "Espaços de trabalho",
+    description: "Gerencie todos os espaços de trabalho desta instância.",
     href: `/workspace/`,
   },
   authentication: {

@@ -25,9 +25,9 @@ const InstanceAIPage = observer(function InstanceAIPage(_props: Route.ComponentP
   return (
     <PageWrapper
       header={{
-        title: "Recursos de IA para todos os seus workspaces",
+        title: "Recursos de IA para todos os seus espaços de trabalho",
         description:
-          "Configure as credenciais da API de IA para ativar os recursos de IA do Apollo em todos os seus workspaces.",
+          "Configure as credenciais da API de IA para ativar os recursos de IA do Apollo em todos os seus espaços de trabalho.",
       }}
     >
       {formattedConfig ? (

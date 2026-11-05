@@ -100,7 +100,7 @@ export function NameColumn(props: NameProps) {
                     }}
                     data-ph-element={MEMBER_TRACKER_ELEMENTS.WORKSPACE_MEMBER_TABLE_CONTEXT_MENU}
                   >
-                    <TrashIcon className="size-3.5 align-middle" /> {id === currentUser?.id ? "Leave " : "Remove "}
+                    <TrashIcon className="size-3.5 align-middle" /> {id === currentUser?.id ? "Sair " : "Remover "}
                   </div>
                 )}
               />
@@ -138,7 +138,7 @@ export const AccountTypeColumn = observer(function AccountTypeColumn(props: Acco
       {isSuspended ? (
         <div className="flex w-32">
           <Pill variant={EPillVariant.DEFAULT} size={EPillSize.SM} className="border-none">
-            Suspended
+            Suspenso
           </Pill>
         </div>
       ) : isRoleNonEditable ? (
@@ -149,7 +149,7 @@ export const AccountTypeColumn = observer(function AccountTypeColumn(props: Acco
         <Controller
           name="role"
           control={control}
-          rules={{ required: "Role is required." }}
+          rules={{ required: "O papel é obrigatório." }}
           render={({ field: { value } }) => (
             <CustomSelect
               value={value as EUserPermissions}
@@ -165,8 +165,8 @@ export const AccountTypeColumn = observer(function AccountTypeColumn(props: Acco
 
                   setToast({
                     type: TOAST_TYPE.ERROR,
-                    title: "Error!",
-                    message: errorString ?? "An error occurred while updating member role. Please try again.",
+                    title: "Erro!",
+                    message: errorString ?? "Ocorreu um erro ao atualizar o papel do membro. Tente novamente.",
                   });
                 }
               }}

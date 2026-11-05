@@ -25,21 +25,21 @@ function ProjectSettingsPage() {
   const resolvedPath = resolvedTheme === "dark" ? ProjectDarkEmptyState : ProjectLightEmptyState;
   return (
     <div className="mx-auto flex h-full max-w-[480px] flex-col items-center justify-center gap-4">
-      <img src={resolvedPath} alt="No projects yet" />
-      <div className="text-16 font-semibold text-tertiary">No projects yet</div>
+      <img src={resolvedPath} alt="Nenhum projeto ainda" />
+      <div className="text-16 font-semibold text-tertiary">Nenhum projeto ainda</div>
       <div className="text-center text-13 text-tertiary">
-        Projects act as the foundation for goal-driven work. They let you manage your teams, tasks, and everything you
-        need to get things done.
+        Os projetos são a base do trabalho orientado a objetivos. Com eles você gerencia equipes, tarefas e tudo o que
+        precisa para concluir o trabalho.
       </div>
       <div className="flex gap-2">
         <Link href="https://apollosolution.com.br" target="_blank" className={cn(getButtonStyling("secondary", "base"))}>
-          Learn more about projects
+          Saiba mais sobre projetos
         </Link>
         <Button
           onClick={() => toggleCreateProjectModal(true)}
           data-ph-element={PROJECT_TRACKER_ELEMENTS.EMPTY_STATE_CREATE_PROJECT_BUTTON}
         >
-          Start your first project
+          Criar seu primeiro projeto
         </Button>
       </div>
     </div>

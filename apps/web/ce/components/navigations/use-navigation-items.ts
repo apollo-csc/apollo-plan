@@ -35,7 +35,7 @@ export const useNavigationItems = ({
       {
         i18n_key: "sidebar.work_items",
         key: "work_items",
-        name: "Work items",
+        name: "Itens",
         href: `/${workspaceSlug}/projects/${projectId}/issues`,
         icon: WorkItemsIcon,
         access: [EUserPermissions.ADMIN, EUserPermissions.MEMBER, EUserPermissions.GUEST],
@@ -45,7 +45,7 @@ export const useNavigationItems = ({
       {
         i18n_key: "sidebar.cycles",
         key: "cycles",
-        name: "Cycles",
+        name: "Ciclos",
         href: `/${workspaceSlug}/projects/${projectId}/cycles`,
         icon: CycleIcon,
         access: [EUserPermissions.ADMIN, EUserPermissions.MEMBER],
@@ -55,7 +55,7 @@ export const useNavigationItems = ({
       {
         i18n_key: "sidebar.modules",
         key: "modules",
-        name: "Modules",
+        name: "Módulos",
         href: `/${workspaceSlug}/projects/${projectId}/modules`,
         icon: ModuleIcon,
         access: [EUserPermissions.ADMIN, EUserPermissions.MEMBER],
@@ -65,7 +65,7 @@ export const useNavigationItems = ({
       {
         i18n_key: "sidebar.views",
         key: "views",
-        name: "Views",
+        name: "Visualizações",
         href: `/${workspaceSlug}/projects/${projectId}/views`,
         icon: ViewsIcon,
         access: [EUserPermissions.ADMIN, EUserPermissions.MEMBER, EUserPermissions.GUEST],
@@ -75,7 +75,7 @@ export const useNavigationItems = ({
       {
         i18n_key: "sidebar.pages",
         key: "pages",
-        name: "Pages",
+        name: "Páginas",
         href: `/${workspaceSlug}/projects/${projectId}/pages`,
         icon: PageIcon,
         access: [EUserPermissions.ADMIN, EUserPermissions.MEMBER, EUserPermissions.GUEST],

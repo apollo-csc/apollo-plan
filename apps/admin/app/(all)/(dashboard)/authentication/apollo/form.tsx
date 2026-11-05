@@ -91,10 +91,10 @@ export function InstanceApolloConfigForm(props: Props) {
     {
       key: "APOLLO_WORKSPACE_SLUG",
       type: "text",
-      label: "Slug do workspace",
+      label: "Slug do espaço de trabalho",
       description: (
         <>
-          Slug do workspace ao qual os usuários são adicionados a cada login no Apollo, com o papel vindo do provedor
+          Slug do espaço de trabalho ao qual os usuários são adicionados a cada login no Apollo, com o papel vindo do provedor
           de identidade (claim de role). Deixe vazio para não sincronizar papéis.
         </>
       ),

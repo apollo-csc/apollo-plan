@@ -69,7 +69,7 @@ const InstanceGoogleAuthenticationPage = observer(function InstanceGoogleAuthent
         <AuthenticationMethodCard
           name="Google"
           description="Permita que membros entrem ou se cadastrem no Apollo com suas contas Google."
-          icon={<img src={GoogleLogo} height={24} width={24} alt="Google Logo" />}
+          icon={<img src={GoogleLogo} height={24} width={24} alt="Logo do Google" />}
           config={
             <ToggleSwitch
               value={Boolean(parseInt(enableGoogleConfig))}

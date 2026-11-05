@@ -98,8 +98,8 @@ export const IssueDescriptionEditor = observer(function IssueDescriptionEditor(p
     } else {
       setToast({
         type: TOAST_TYPE.ERROR,
-        title: "Error!",
-        message: "Editor is still processing changes. Please wait before proceeding.",
+        title: "Erro!",
+        message: "O editor ainda está processando as alterações. Aguarde antes de continuar.",
       });
       event.preventDefault(); // Prevent default action if editor is not ready to discard
     }
@@ -128,9 +128,9 @@ export const IssueDescriptionEditor = observer(function IssueDescriptionEditor(p
         if (res.response === "")
           setToast({
             type: TOAST_TYPE.ERROR,
-            title: "Error!",
+            title: "Erro!",
             message:
-              "Work item title isn't informative enough to generate the description. Please try with a different title.",
+              "O título do item não tem informação suficiente para gerar a descrição. Tente com outro título.",
           });
         else handleAiAssistance(res.response_html);
       })
@@ -140,14 +140,14 @@ export const IssueDescriptionEditor = observer(function IssueDescriptionEditor(p
         if (err.status === 429)
           setToast({
             type: TOAST_TYPE.ERROR,
-            title: "Error!",
-            message: error || "You have reached the maximum number of requests of 50 requests per month per user.",
+            title: "Erro!",
+            message: error || "Você atingiu o limite de 50 solicitações por mês por usuário.",
           });
         else
           setToast({
             type: TOAST_TYPE.ERROR,
-            title: "Error!",
-            message: error || "Some error occurred. Please try again.",
+            title: "Erro!",
+            message: error || "Algo deu errado. Tente novamente.",
           });
       })
       .finally(() => setIAmFeelingLucky(false));
@@ -255,10 +255,10 @@ export const IssueDescriptionEditor = observer(function IssueDescriptionEditor(p
                 tabIndex={getIndex("feeling_lucky")}
               >
                 {iAmFeelingLucky ? (
-                  "Generating response"
+                  "Gerando resposta"
                 ) : (
                   <>
-                    <Sparkle className="h-3.5 w-3.5" />I{"'"}m feeling lucky
+                    <Sparkle className="h-3.5 w-3.5" />Estou com sorte
                   </>
                 )}
               </button>

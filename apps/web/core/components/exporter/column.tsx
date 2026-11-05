@@ -20,7 +20,7 @@ export const useExportColumns = () => {
   const columns = [
     {
       key: "Exported By",
-      content: "Exported By",
+      content: "Exportado por",
       tdRender: (rowData: RowData) => {
         const { avatar_url, display_name, email } = rowData.initiated_by_detail;
         return (
@@ -47,18 +47,18 @@ export const useExportColumns = () => {
     },
     {
       key: "Exported On",
-      content: "Exported On",
+      content: "Exportado em",
       tdRender: (rowData: RowData) => <span>{renderFormattedDate(rowData.created_at)}</span>,
     },
 
     {
       key: "Exported projects",
-      content: "Exported projects",
+      content: "Projetos exportados",
       tdRender: (rowData: RowData) => <div className="text-13">{rowData.project.length} project(s)</div>,
     },
     {
       key: "Format",
-      content: "Format",
+      content: "Formato",
       tdRender: (rowData: RowData) => (
         <span className="text-13">
           {rowData.provider === "csv"
@@ -88,13 +88,13 @@ export const useExportColumns = () => {
                     : "bg-gray-500/20 text-gray-500"
           }`}
         >
-          {rowData.status}
+          {({ queued: "Na fila", processing: "Processando", completed: "Concluído", failed: "Falhou", expired: "Expirado" } as Record<string, string>)[rowData.status] ?? rowData.status}
         </span>
       ),
     },
     {
       key: "Download",
-      content: "Download",
+      content: "Baixar",
       tdRender: (rowData: RowData) =>
         checkExpiry(rowData.created_at) ? (
           <>
@@ -102,7 +102,7 @@ export const useExportColumns = () => {
               <a target="_blank" href={rowData?.url} rel="noopener noreferrer">
                 <button className="flex w-full items-center gap-1 font-medium text-accent-primary">
                   <Download className="h-4 w-4" />
-                  <div>Download</div>
+                  <div>Baixar</div>
                 </button>
               </a>
             ) : (
@@ -110,7 +110,7 @@ export const useExportColumns = () => {
             )}
           </>
         ) : (
-          <div className="text-11 text-danger-primary">Expired</div>
+          <div className="text-11 text-danger-primary">Expirado</div>
         ),
     },
   ];

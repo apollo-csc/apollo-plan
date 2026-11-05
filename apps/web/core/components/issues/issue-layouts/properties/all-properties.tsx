@@ -254,7 +254,7 @@ export const IssueProperties = observer(function IssueProperties(props: IIssuePr
             renderByDefault={isMobile}
             showTooltip
             renderPlaceholder={false}
-            customTooltipHeading="Date Range"
+            customTooltipHeading="Intervalo de datas"
           />
         </div>
       </WithDisplayPropertiesHOC>

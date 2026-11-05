@@ -69,7 +69,7 @@ const InstanceGitlabAuthenticationPage = observer(function InstanceGitlabAuthent
         <AuthenticationMethodCard
           name="GitLab"
           description="Permita que membros entrem ou se cadastrem no Apollo com suas contas GitLab."
-          icon={<img src={GitlabLogo} height={24} width={24} alt="GitLab Logo" />}
+          icon={<img src={GitlabLogo} height={24} width={24} alt="Logo do GitLab" />}
           config={
             <ToggleSwitch
               value={Boolean(parseInt(enableGitlabConfig))}

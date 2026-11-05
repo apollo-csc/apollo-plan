@@ -40,8 +40,8 @@ export const useCoreOAuthConfig = (oauthActionText: string): TOAuthConfigs => {
   const oAuthOptions: TOAuthOption[] = [
     {
       id: "google",
-      text: `${oauthActionText} with Google`,
-      icon: <img src={googleLogo} height={18} width={18} alt="Google Logo" />,
+      text: `${oauthActionText} com Google`,
+      icon: <img src={googleLogo} height={18} width={18} alt="Logo do Google" />,
       onClick: () => {
         window.location.assign(`${API_BASE_URL}/auth/google/${next_path ? `?next_path=${next_path}` : ``}`);
       },
@@ -49,13 +49,13 @@ export const useCoreOAuthConfig = (oauthActionText: string): TOAuthConfigs => {
     },
     {
       id: "github",
-      text: `${oauthActionText} with GitHub`,
+      text: `${oauthActionText} com GitHub`,
       icon: (
         <img
           src={resolvedTheme === "dark" ? githubLightLogo : githubDarkLogo}
           height={18}
           width={18}
-          alt="GitHub Logo"
+          alt="Logo do GitHub"
         />
       ),
       onClick: () => {
@@ -65,8 +65,8 @@ export const useCoreOAuthConfig = (oauthActionText: string): TOAuthConfigs => {
     },
     {
       id: "gitlab",
-      text: `${oauthActionText} with GitLab`,
-      icon: <img src={gitlabLogo} height={18} width={18} alt="GitLab Logo" />,
+      text: `${oauthActionText} com GitLab`,
+      icon: <img src={gitlabLogo} height={18} width={18} alt="Logo do GitLab" />,
       onClick: () => {
         window.location.assign(`${API_BASE_URL}/auth/gitlab/${next_path ? `?next_path=${next_path}` : ``}`);
       },
@@ -74,8 +74,8 @@ export const useCoreOAuthConfig = (oauthActionText: string): TOAuthConfigs => {
     },
     {
       id: "gitea",
-      text: `${oauthActionText} with Gitea`,
-      icon: <img src={giteaLogo} height={18} width={18} alt="Gitea Logo" />,
+      text: `${oauthActionText} com Gitea`,
+      icon: <img src={giteaLogo} height={18} width={18} alt="Logo do Gitea" />,
       onClick: () => {
         window.location.assign(`${API_BASE_URL}/auth/gitea/${next_path ? `?next_path=${next_path}` : ``}`);
       },
@@ -86,9 +86,9 @@ export const useCoreOAuthConfig = (oauthActionText: string): TOAuthConfigs => {
       // Instância pt-BR: rótulo do SSO Apollo traduzido (demais provedores ficam
       // no padrão inglês do upstream e desativados na nossa stack)
       text:
-        oauthActionText === "Sign up"
+        oauthActionText === "Criar conta"
           ? "Criar conta com Apollo"
-          : oauthActionText === "Continue"
+          : oauthActionText === "Continuar"
             ? "Continuar com Apollo"
             : "Entrar com Apollo",
       icon: <ShieldCheck height={18} width={18} />,

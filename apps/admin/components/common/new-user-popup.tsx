@@ -22,14 +22,14 @@ export const NewUserPopup = observer(function NewUserPopup() {
     <div className="shadow-md absolute right-8 bottom-8 w-96 rounded-lg border border-subtle bg-surface-1 p-6">
       <div className="flex gap-4">
         <div className="grow">
-          <div className="text-14 font-semibold">Criar workspace</div>
+          <div className="text-14 font-semibold">Criar espaço de trabalho</div>
           <div className="py-2 text-13 font-medium text-tertiary">
             Instância configurada! Bem-vindo ao portal de administração do Apollo. Comece criando seu primeiro
-            workspace.
+            espaço de trabalho.
           </div>
           <div className="flex items-center gap-4 pt-2">
             <Link href="/workspace/create" className={getButtonStyling("primary", "lg")}>
-              Criar workspace
+              Criar espaço de trabalho
             </Link>
             <Button variant="secondary" size="lg" onClick={toggleNewUserPopup}>
               Fechar

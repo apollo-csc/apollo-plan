@@ -16,8 +16,8 @@ const WorkspaceCreatePage = observer(function WorkspaceCreatePage(_props: Route.
   return (
     <PageWrapper
       header={{
-        title: "Crie um novo workspace nesta instância.",
-        description: "Após criar o workspace, convide os usuários pelas Configurações do Workspace.",
+        title: "Crie um novo espaço de trabalho nesta instância.",
+        description: "Após criar o espaço de trabalho, convide os usuários pelas configurações do espaço de trabalho.",
       }}
     >
       <WorkspaceCreateForm />
@@ -25,6 +25,6 @@ const WorkspaceCreatePage = observer(function WorkspaceCreatePage(_props: Route.
   );
 });
 
-export const meta: Route.MetaFunction = () => [{ title: "Criar workspace - Apollo Admin" }];
+export const meta: Route.MetaFunction = () => [{ title: "Criar espaço de trabalho - Apollo Admin" }];
 
 export default WorkspaceCreatePage;

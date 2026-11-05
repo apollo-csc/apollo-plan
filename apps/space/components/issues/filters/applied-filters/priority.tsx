@@ -20,7 +20,9 @@ export function AppliedPriorityFilters(props: Props) {
       {values?.map((priority) => (
         <div key={priority} className="flex items-center gap-1 rounded-sm bg-layer-3 p-1 text-11">
           <PriorityIcon priority={priority} className={`h-3 w-3`} />
-          {priority}
+          {({ urgent: "Urgente", high: "Alta", medium: "Média", low: "Baixa", none: "Nenhuma" } as Record<string, string>)[
+            priority
+          ] ?? priority}
           <button
             type="button"
             className="grid place-items-center text-tertiary hover:text-secondary"
