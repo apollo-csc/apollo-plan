@@ -4,11 +4,12 @@
  * See the LICENSE file for details.
  */
 
+import type { ReactNode } from "react";
 import { AlertCircle, CheckCircle2 } from "lucide-react";
 
 type TBanner = {
   type: "success" | "error";
-  message: string;
+  message: ReactNode;
 };
 
 export function Banner(props: TBanner) {
