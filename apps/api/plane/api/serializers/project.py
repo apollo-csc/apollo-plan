@@ -313,3 +313,15 @@ class ProjectLiteSerializer(BaseSerializer):
             "cover_image_url",
         ]
         read_only_fields = fields
+
+
+class ProjectLiteListSerializer(ProjectLiteSerializer):
+    """O mesmo enxuto, mais `archived_at` — o que o cliente do MCP espera.
+
+    Fica separado de proposito: o `ProjectLiteSerializer` e usado embutido em
+    varias respostas, e acrescentar campo la mudaria todas elas.
+    """
+
+    class Meta(ProjectLiteSerializer.Meta):
+        fields = ProjectLiteSerializer.Meta.fields + ["archived_at"]
+        read_only_fields = fields

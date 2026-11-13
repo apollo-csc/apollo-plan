@@ -4,6 +4,7 @@
 
 from .project import (
     ProjectListCreateAPIEndpoint,
+    ProjectLiteListAPIEndpoint,
     ProjectDetailAPIEndpoint,
     ProjectArchiveUnarchiveAPIEndpoint,
     ProjectSummaryAPIEndpoint,

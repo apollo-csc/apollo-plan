@@ -6,6 +6,7 @@ from django.urls import path
 
 from plane.api.views import (
     ProjectListCreateAPIEndpoint,
+    ProjectLiteListAPIEndpoint,
     ProjectDetailAPIEndpoint,
     ProjectArchiveUnarchiveAPIEndpoint,
     ProjectSummaryAPIEndpoint,
@@ -16,6 +17,13 @@ urlpatterns = [
         "workspaces/<str:slug>/projects/",
         ProjectListCreateAPIEndpoint.as_view(http_method_names=["get", "post"]),
         name="project",
+    ),
+    # Lista enxuta para pickers e para o MCP do Plane (ApolloLink). Vem ANTES
+    # da rota com <uuid:pk> por clareza; os caminhos nao colidem.
+    path(
+        "workspaces/<str:slug>/projects-lite/",
+        ProjectLiteListAPIEndpoint.as_view(http_method_names=["get"]),
+        name="project-lite",
     ),
     path(
         "workspaces/<str:slug>/projects/<uuid:pk>/",

@@ -7,6 +7,7 @@ from .workspace import WorkspaceLiteSerializer
 from .project import (
     ProjectSerializer,
     ProjectLiteSerializer,
+    ProjectLiteListSerializer,
     ProjectCreateSerializer,
     ProjectUpdateSerializer,
 )

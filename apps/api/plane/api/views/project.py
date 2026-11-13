@@ -41,6 +41,8 @@ from plane.bgtasks.webhook_task import model_activity, webhook_activity
 from .base import BaseAPIView
 from plane.utils.host import base_host
 from plane.api.serializers import (
+    ProjectLiteSerializer,
+    ProjectLiteListSerializer,
     ProjectSerializer,
     ProjectCreateSerializer,
     ProjectUpdateSerializer,
@@ -282,6 +284,53 @@ class ProjectListCreateAPIEndpoint(BaseAPIView):
                 {"identifier": "The project identifier is already taken"},
                 status=status.HTTP_409_CONFLICT,
             )
+
+
+class ProjectLiteListAPIEndpoint(BaseAPIView):
+    """Lista enxuta de projetos — `GET /workspaces/<slug>/projects-lite/`.
+
+    POR QUE ISTO EXISTE (Apollo, 13/nov/2026)
+    -----------------------------------------
+    O MCP oficial do Plane (`makeplane/plane-mcp-server`, usado pelo ApolloLink)
+    chama este caminho na acao `project list`. Ele nasceu numa versao do Plane
+    mais nova que este fork, e sem ele a ferramenta respondia 404 — sem ela nao
+    ha como descobrir o id de um projeto, que e parametro de quase tudo.
+
+    E so leitura, com os mesmos campos do `ProjectLiteSerializer` (id,
+    identifier, name, cover_image, icon_prop, emoji, description,
+    cover_image_url) mais `archived_at`, que o cliente espera.
+
+    ⚠️ Projeto arquivado fica FORA por padrao, como no Plane de cima;
+    `?include_archived=true` traz todos. A visibilidade e a mesma da lista
+    completa: projeto de que a pessoa participa, ou publico (network=2).
+    """
+
+    serializer_class = ProjectLiteSerializer
+    model = Project
+    permission_classes = [ProjectBasePermission]
+    use_read_replica = True
+
+    def get(self, request, slug):
+        incluir_arquivados = str(request.GET.get("include_archived", "")).lower() in ("true", "1")
+        projetos = (
+            Project.objects.filter(workspace__slug=slug)
+            .filter(
+                Q(
+                    project_projectmember__member=request.user,
+                    project_projectmember__is_active=True,
+                )
+                | Q(network=2)
+            )
+            .distinct()
+        )
+        if not incluir_arquivados:
+            projetos = projetos.filter(archived_at__isnull=True)
+        projetos = projetos.order_by(request.GET.get("order_by", "-created_at"))
+        return self.paginate(
+            request=request,
+            queryset=projetos,
+            on_results=lambda itens: ProjectLiteListSerializer(itens, many=True).data,
+        )
 
 
 class ProjectDetailAPIEndpoint(BaseAPIView):
