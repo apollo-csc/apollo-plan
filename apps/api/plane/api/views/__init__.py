@@ -35,6 +35,7 @@ from .issue import (
 
 from .cycle import (
     CycleListCreateAPIEndpoint,
+    CycleLiteListAPIEndpoint,
     CycleDetailAPIEndpoint,
     CycleIssueListCreateAPIEndpoint,
     CycleIssueDetailAPIEndpoint,
@@ -44,6 +45,7 @@ from .cycle import (
 
 from .module import (
     ModuleListCreateAPIEndpoint,
+    ModuleLiteListAPIEndpoint,
     ModuleDetailAPIEndpoint,
     ModuleIssueListCreateAPIEndpoint,
     ModuleIssueDetailAPIEndpoint,

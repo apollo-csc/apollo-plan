@@ -26,6 +26,7 @@ from drf_spectacular.utils import OpenApiRequest, OpenApiResponse
 # Module imports
 from plane.api.serializers import (
     CycleIssueSerializer,
+    CycleLiteListSerializer,
     CycleSerializer,
     CycleIssueRequestSerializer,
     TransferCycleIssueRequestSerializer,
@@ -1200,3 +1201,63 @@ class TransferCycleIssueAPIEndpoint(BaseAPIView):
                 {"error": result.get("error")},
                 status=status.HTTP_400_BAD_REQUEST,
             )
+
+
+class CycleLiteListAPIEndpoint(BaseAPIView):
+    """Lista enxuta de ciclos — `GET /workspaces/<slug>/projects/<id>/cycles-lite/`.
+
+    POR QUE ISTO EXISTE (Apollo, 13/nov/2026)
+    -----------------------------------------
+    Mesmo caso do `projects-lite` (commit fd5a9eb): o MCP oficial do Plane
+    (`makeplane/plane-mcp-server`, usado pelo ApolloLink) chama este caminho na
+    acao `cycle list`. Ele nasceu numa versao do Plane mais nova que este fork e
+    respondia 404 — a lista COMPLETA (`cycles/`) ja respondia 200.
+
+    So leitura, sem migracao. E a mesma queryset e a mesma permissao da lista
+    completa, menos as contagens anotadas (total_issues, completed_issues...),
+    que e justamente o que o cliente espera no modelo `CycleLite`.
+
+    ⚠️ Ciclo arquivado fica FORA, como na lista completa. O filtro aceito e
+    `status` (current/upcoming/completed/draft/incomplete) — e, ao contrario da
+    lista completa, `status=current` TAMBEM devolve o envelope paginado, porque
+    e isso que o SDK valida (`PaginatedCycleLiteResponse`).
+    """
+
+    serializer_class = CycleLiteListSerializer
+    model = Cycle
+    permission_classes = [ProjectEntityPermission]
+    use_read_replica = True
+
+    def get_queryset(self):
+        return (
+            Cycle.objects.filter(workspace__slug=self.kwargs.get("slug"))
+            .filter(project_id=self.kwargs.get("project_id"))
+            .filter(
+                project__project_projectmember__member=self.request.user,
+                project__project_projectmember__is_active=True,
+            )
+            .select_related("project", "workspace", "owned_by")
+            .distinct()
+        )
+
+    def get(self, request, slug, project_id):
+        """List cycles (lite)"""
+        queryset = self.get_queryset().filter(archived_at__isnull=True)
+        filtro = request.GET.get("status", "all")
+
+        if filtro == "current":
+            queryset = queryset.filter(start_date__lte=timezone.now(), end_date__gte=timezone.now())
+        elif filtro == "upcoming":
+            queryset = queryset.filter(start_date__gt=timezone.now())
+        elif filtro == "completed":
+            queryset = queryset.filter(end_date__lt=timezone.now())
+        elif filtro == "draft":
+            queryset = queryset.filter(end_date=None, start_date=None)
+        elif filtro == "incomplete":
+            queryset = queryset.filter(Q(end_date__gte=timezone.now()) | Q(end_date__isnull=True))
+
+        return self.paginate(
+            request=request,
+            queryset=queryset,
+            on_results=lambda ciclos: CycleLiteListSerializer(ciclos, many=True).data,
+        )

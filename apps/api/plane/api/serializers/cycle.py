@@ -193,3 +193,17 @@ class TransferCycleIssueRequestSerializer(serializers.Serializer):
     """
 
     new_cycle_id = serializers.UUIDField(help_text="ID of the target cycle to transfer issues to")
+
+
+class CycleLiteListSerializer(CycleLiteSerializer):
+    """O mesmo enxuto da lista `cycles-lite` — serializer PROPRIO de proposito.
+
+    O `CycleLiteSerializer` e embutido em outras respostas; mexer nele mudaria
+    todas elas. Aqui so o reaproveitamos, sem acrescentar campo: o cliente do
+    MCP (modelo `CycleLite` do SDK) espera o conjunto completo do modelo menos
+    as contagens anotadas, e `fields = "__all__"` ja entrega exatamente isso.
+    """
+
+    class Meta(CycleLiteSerializer.Meta):
+        model = Cycle
+        fields = "__all__"

@@ -283,3 +283,17 @@ class ModuleIssueRequestSerializer(serializers.Serializer):
         child=serializers.UUIDField(),
         help_text="List of issue IDs to add to the module",
     )
+
+
+class ModuleLiteListSerializer(ModuleLiteSerializer):
+    """O mesmo enxuto da lista `modules-lite` — serializer PROPRIO de proposito.
+
+    O `ModuleLiteSerializer` e embutido em outras respostas; mexer nele mudaria
+    todas elas. `fields = "__all__"` entrega o conjunto completo do modelo menos
+    as contagens anotadas — inclusive `members` como lista de ids, que e o que o
+    modelo `ModuleLite` do SDK espera.
+    """
+
+    class Meta(ModuleLiteSerializer.Meta):
+        model = Module
+        fields = "__all__"

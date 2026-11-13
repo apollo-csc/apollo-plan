@@ -20,6 +20,7 @@ from drf_spectacular.utils import OpenApiResponse, OpenApiRequest
 from plane.api.serializers import (
     IssueSerializer,
     ModuleIssueSerializer,
+    ModuleLiteListSerializer,
     ModuleSerializer,
     ModuleIssueRequestSerializer,
     ModuleCreateSerializer,
@@ -1075,3 +1076,46 @@ class ModuleArchiveUnarchiveAPIEndpoint(BaseAPIView):
         module.archived_at = None
         module.save()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class ModuleLiteListAPIEndpoint(BaseAPIView):
+    """Lista enxuta de modulos — `GET /workspaces/<slug>/projects/<id>/modules-lite/`.
+
+    POR QUE ISTO EXISTE (Apollo, 13/nov/2026)
+    -----------------------------------------
+    Mesmo caso do `projects-lite` (commit fd5a9eb): o MCP oficial do Plane
+    (`makeplane/plane-mcp-server`, usado pelo ApolloLink) chama este caminho na
+    acao `module list`. Ele nasceu numa versao do Plane mais nova que este fork e
+    respondia 404 — a lista COMPLETA (`modules/`) ja respondia 200.
+
+    So leitura, sem migracao. Mesma permissao da lista completa, sem as
+    contagens anotadas, e com `members` como lista de ids — o que o cliente
+    espera no modelo `ModuleLite`. Modulo arquivado fica FORA, como na lista
+    completa. Nao ha filtro, so ordenacao e paginacao por cursor.
+    """
+
+    serializer_class = ModuleLiteListSerializer
+    model = Module
+    permission_classes = [ProjectEntityPermission]
+    use_read_replica = True
+
+    def get_queryset(self):
+        return (
+            Module.objects.filter(project_id=self.kwargs.get("project_id"))
+            .filter(workspace__slug=self.kwargs.get("slug"))
+            .filter(
+                project__project_projectmember__member=self.request.user,
+                project__project_projectmember__is_active=True,
+            )
+            .select_related("project", "workspace", "lead")
+            .prefetch_related("members")
+            .distinct()
+        )
+
+    def get(self, request, slug, project_id):
+        """List modules (lite)"""
+        return self.paginate(
+            request=request,
+            queryset=self.get_queryset().filter(archived_at__isnull=True),
+            on_results=lambda modulos: ModuleLiteListSerializer(modulos, many=True).data,
+        )
