@@ -2540,3 +2540,52 @@ class IssueRelationListCreateAPIEndpoint(BaseAPIView):
             serializer_class(refetched_relations, many=True).data,
             status=status.HTTP_201_CREATED,
         )
+
+
+class IssueRelationRemoveAPIEndpoint(BaseAPIView):
+    """Remove UMA relacao entre dois itens (Apollo, 17/nov/2026).
+
+    A API publica do CE so lista e cria relacoes; remover existia apenas na API
+    interna do app (sessao do navegador). O conector ApolloLink usa a API por
+    chave, entao esta rota espelha o `remove_relation` do app: apaga a relacao
+    entre os dois itens (em qualquer direcao), registra a atividade e responde
+    204. Sem relacao, 404.
+    """
+
+    model = IssueRelation
+    permission_classes = [ProjectEntityPermission]
+
+    def post(self, request, slug, project_id, issue_id):
+        related_issue = request.data.get("related_issue")
+        try:
+            related_issue = str(uuid.UUID(str(related_issue)))
+        except (ValueError, TypeError):
+            return Response(
+                {"error": "related_issue deve ser o UUID do outro item"},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+        relation = (
+            IssueRelation.objects.filter(workspace__slug=slug)
+            .filter(
+                Q(issue_id=related_issue, related_issue_id=issue_id)
+                | Q(issue_id=issue_id, related_issue_id=related_issue)
+            )
+            .filter(Q(issue__project_id=project_id) | Q(related_issue__project_id=project_id))
+            .first()
+        )
+        if relation is None:
+            return Response({"error": "relacao nao encontrada"}, status=status.HTTP_404_NOT_FOUND)
+        current_instance = json.dumps(IssueRelationSerializer(relation).data, cls=DjangoJSONEncoder)
+        relation.delete()
+        issue_activity.delay(
+            type="issue_relation.activity.deleted",
+            requested_data=json.dumps({"related_issue": related_issue}, cls=DjangoJSONEncoder),
+            actor_id=str(request.user.id),
+            issue_id=str(issue_id),
+            project_id=str(project_id),
+            current_instance=current_instance,
+            epoch=int(timezone.now().timestamp()),
+            notification=True,
+            origin=base_host(request=request, is_app=True),
+        )
+        return Response(status=status.HTTP_204_NO_CONTENT)
